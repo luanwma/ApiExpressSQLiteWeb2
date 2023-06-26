@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="stylesCadastro.css" type='text/css' media="screen">
+    
+    <link rel="stylesheet" href="rodape.css">
+   
+    
+  
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Libre&display=swap" rel="stylesheet" type="text/css" media="screen">
+    
+    <title id="pTitle">Criar Cadastro</title>
+   
+</head>
+
+<body >
+    
+    
+    <header>
+       {{> headerNaoLogado}}
+    </header>
+
+
+
+    <div class="corpoBody"> 
+
+
+        <form action="/cadastro_usuario" method="POST">
+            <div class="form-group">
+              <label for="nome">Nome:</label>
+              <input type="text" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="senha">Senha:</label>
+              <input type="password" id="senha" name="password" required>
+            </div>
+            <div class="form-group">
+              <label for="repetirSenha">Repetir Senha:</label>
+              <input type="password" id="repetirSenha" name="repetirSenha" required>
+            </div>
+            <div class="form-group">
+              <label for="dataNascimento">Data de Nascimento:</label>
+              <input type="date" id="dataNascimento" name="birthdate" required>
+            </div>
+          <!--   <button type="submit">Cadastrar Usuário</button> -->
+            <input type="submit" value="Cadastrar" id="btnCadastrarConta" class="botaoVerde" />
+          </form>
+
+       
+           <!--  <div class="formulario"> 
+
+                <div class="rotulos">
+                    <div class="lblTxt" > <label class="input-label" for="nome">Nome</label> </div>
+                    
+                    <div class="lblTxt"> <label class="input-label" for="data_nasc">Data de Nascimento</label> </div>
+                   <div class="lblTxt"><label class="input-label" for="email">Email</label> </div> 
+                   <div class="lblTxt">   <label class="input-label" for="senha">Senha</label>      </div> 
+                    <div class="lblTxt">  <label class="input-label" for="repetsenha">Repetir senha</label> </div>
+                </div>
+
+                <div class="entradasDados">
+
+                    <input class ="lblTxt" name="name" id="nome"  type="text" placeholder="Insira seu nome" data-tipo="nome" required>
+
+                 
+                    <input class="lblTxt" name="data_nasc" id="data_nasc"  type="date" placeholder="dia/mês/ano" data-tipo="data" required>
+                    <input class="lblTxt" name="email" id="email" type="email" placeholder="Insira seu email" data-tipo="email" required>
+
+                    <input class="lblTxt" name="password" id="senha"  type="password" placeholder="Crie uma senha" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*[ !@#$%^&*_=+-]).{6,12}$" 
+                    title="A senha deve conter entre 6 a 12 caracteres, deve conter pelo menos uma letra maiúscula, um número e não deve conter símbolos." data-tipo="senha" required>
+                    
+                    <input class="lblTxt" name="repetsenha" id="repetsenha"  type="password" placeholder="Repita a senha" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*[ !@#$%^&*_=+-]).{6,12}$" 
+                    title="A senha deve conter entre 6 a 12 caracteres, deve conter pelo menos uma letra maiúscula, um número e não deve conter símbolos." data-tipo="repetsenha" required>
+                
+                </div>
+                
+               
+
+               
+                
+            </div>  -->
+        
+
+
+            <div class="">  
+               <!-- <input type="submit" value="Cadastrar" id="btnCadastrarConta" class="botaoVerde" /> -->
+                
+            </div>
+       
+    </div>
+
+
+
+
+     
+       
+
+       
+          
+    
+    <script  src="../js/criar_conta.js"  type="module">
+        
+    </script>
+        <footer>
+          {{> rodape}}
+        </footer>
+</body>
+</html>

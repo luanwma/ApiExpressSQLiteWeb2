@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesRecuperar.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Libre&display=swap" rel="stylesheet">
+    <title id="pTitle">Recuperar Senha</title>
+</head>
+<body>
+    
+    <header>
+        {{> headerNaoLogado}}
+    </header>
+    <div class="form">
+        <div class="formulario">
+            <div class="rotulos">
+                <label class="input-label" for="email">Email</label>
+
+            </div>
+            <div class="inputs">
+                <input name="email" id="email" type="email" placeholder="Insira seu email" data-tipo="email" required>
+
+            </div>
+            
+           
+           
+
+        </div>
+        <div class="div_btnRecuperar">
+            <button class="btn_recuperar" id="btnRecuperarSenha" >Redefinir Senha</button>
+        </div>
+
+    </div>
+
+
+    <script  src="../js/recuperar.js"  type="module"> </script>
+</body>
+</html>

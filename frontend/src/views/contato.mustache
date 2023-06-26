@@ -1,0 +1,59 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Averia+Libre&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="stylesContato.css">
+        
+        <link rel="stylesheet" href="rodape.css">
+        <title id="title">Contato</title>
+    
+    </head>
+
+
+    <body>
+        <header>
+            {{> headerNaoLogado}}
+        </header>
+        <!-- "https://api.staticforms.xyz/submit" 
+            https://formsubmit.co/ajax/luanwma@hotmail.com
+        -->
+        <form class="corpoBody" action="/contato" method="POST">
+
+            
+            <div class="formulario">
+                <div class="rotulos">
+                     <input type="hidden" name="accessKey" value="5eba9309-8b47-46aa-a9c1-a84a3acd279a">
+                    <label class="input-label" for="nome">Nome</label>
+                    <label class="input-label" for="email">Email</label>
+                    <label class="input-label" for="assunto">Assunto</label>
+                    <label class="input-label" for="mensagem">Mensagem</label>
+    
+                </div>
+                <div class="entradasDados">
+
+                    <input name="nome" id="nome" type="name" required class="txtEntrada" autocomplete="off" value="nome teste" >     
+                    <input name="email" id="email" type="email" placeholder="Insira seu email" data-tipo="email" required class="txtEntrada" autocomplete="off"  value="luanwma@hotmail.com" >
+                    <input class="txtEntrada" name="assunto" id="assunto"  type="text"  data-tipo="text" required autocomplete="off" value="assunto teste">
+                    <textarea class="txtEntrada" name="mensagem" id="mensagem"  type="text"  data-tipo="textarea" required autocomplete="on" >msg teste</textarea>
+                    <!--<input type="hidden" name="redirectTo" value="http://localhost:3000/minhas_receitas"> -->
+                    
+                </div>
+                
+
+            </div>
+            <div class="">
+                <input type="submit" value="Enviar" class="botaoVerde" id="btnEnviar" />
+            </div>
+            
+        </form>
+
+        <footer>
+            {{> rodape}}
+        </footer>
+    </body>
+
+
+</html>

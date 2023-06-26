@@ -1,0 +1,86 @@
+.container{
+    display: flex;
+    
+    flex-direction: row;
+   
+    justify-content: space-around;
+    height: 87px;
+    /*background-color: #8FE1D9; */
+    align-items: center;
+   
+}
+
+.logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+/*
+.classLogo{
+    display: flex;
+    flex-direction: row;
+
+}
+*/
+.classLogo a {
+    text-decoration: none;
+}
+
+#nome_logo{
+    color: #419ED7;
+    font-family: 'Averia Libre';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    text-decoration: none;
+
+}
+
+#logo{
+    margin-left: 30px;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+ 
+}
+
+
+.deslogar{
+    width: fit-content;
+    padding: 5px;
+    background-color: #49B976;
+    border-radius: 10px;
+    font-family: 'Averia Libre';
+    font-style: normal;
+    color: #FFFFFF;
+    font-size: 15px;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.deslogar:hover{
+    background-color: #2ea55d;
+}
+
+.menu li{
+    display: inline;
+    list-style-type: none;
+    text-decoration: none;
+    padding: 10px;
+    
+    
+    border-radius: 10px;
+}
+.textMenu{
+    color: #419ED7;
+}
+.menu li:hover{
+    background-color: #FFC971;
+    text-decoration-color: #419ED7;
+    color:blue;
+    
+}
+.menu li::after{
+    color: #419ED7;
+}

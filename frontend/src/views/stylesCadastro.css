@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+   /* background-color:#ADD5D0; */
+    background-image: linear-gradient(160deg,  #CC5803, #E2711D, #FF9505, #FFB627, #FFC971);   
+    height: 100vh;
+    
+
+    font-family: 'Averia Libre';
+}
+
+
+
+.corpoBody{
+    
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  
+    align-items: center;
+    justify-content: center;
+    
+    width: 100%;
+    
+    
+    font-family: 'Averia Libre';
+    font-style: normal;
+    font-size: 20px;
+    color: #419ED7;
+    
+    
+}
+
+form {
+    width: 400px;
+    padding: 20px;
+    margin-bottom: 0.005%;
+    
+}
+.form-group {
+  margin-bottom: 2%;
+}
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input,
+  textarea {
+    width: 100%;
+    padding: 8px;
+
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+ }
+.formulario{
+    
+    display: flex;
+    
+    flex-direction: row; 
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    
+    text-align: center;
+    font-family: 'Averia Libre';
+    font-style: normal;
+    font-size: 20px;
+    color: #419ED7;
+
+}
+
+.formulario input[type='textarea']{
+    height: 200px;
+}
+.rotulos{
+    display: flex;
+    flex-direction: column;
+    
+    row-gap: 30px; 
+   /* margin-bottom:  10px;
+    */
+}
+
+.entradasDados{
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+}
+
+.entradasDados input, textarea{
+    font-family: 'Averia Libre';
+    font-size: 20px;
+    /*color: #3F92C5; */
+    width: 100%; 
+    display: block;
+    margin-left: 2%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+   
+    
+}
+
+.botaoVerde{
+    width: fit-content;
+    padding: 5px;
+    background-color: #49B976;
+    border-radius: 10px;
+    font-family: 'Averia Libre';
+    font-style: normal;
+    color: #FFFFFF;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+}

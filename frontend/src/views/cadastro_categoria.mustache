@@ -1,0 +1,59 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Averia+Libre&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="stylesCadastro.css">
+       
+        <link rel="stylesheet" href="rodape.css">
+        <title id="title">Cadastro Categoria</title>
+    
+    </head>
+
+
+    <body>
+        <header>
+           {{> headerLogado}}
+        </header>
+
+        <div class="corpoBody">
+            <h2> Cadastro de nova Categoria </h2>
+
+            
+            <div class="formulario">
+                <div class="rotulos">
+                    <label class="input-label" for="nomecategoria">Nome </label>
+                    <label class="input-label" for="descricao">Descrição</label>
+    
+                </div>
+                <div class="entradasDados">
+    
+                    <input name="nomecategoria" id="nomecategoria" type="text"  data-tipo="text" required class="txtEntrada">
+    
+                    <textarea class="txtEntrada" name="descricao" id="descricaocategoria"  type="text"  data-tipo="textarea" required>
+                    
+                     </textarea>
+    
+                </div>
+
+                
+
+            </div>
+            <div class=""> <a > 
+            <button id="btnCadastrarReceita" class="botaoVerde" >
+                Cadastrar
+            </button></a>
+            
+        </div>
+            
+        </div>
+
+        <footer>
+            {{> rodape}}
+        </footer>
+    </body>
+
+
+</html>

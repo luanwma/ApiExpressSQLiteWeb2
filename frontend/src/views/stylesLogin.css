@@ -1,0 +1,160 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html ,body{
+   /* background-color:#ADD5D0; */
+    background-image: linear-gradient(160deg,  #CC5803, #E2711D, #FF9505, #FFB627, #FFC971);   
+    /*height: 100vh; */
+   height: 100vh;
+   
+
+    font-family: 'Averia Libre';
+}
+
+
+
+.corpoBody{
+    
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+  
+    align-items: center;
+    justify-content: center;
+    
+    width: 100%;
+    font-family: 'Averia Libre';
+    font-style: normal;
+    font-size: 24px;
+    color: #419ED7;
+    
+    
+}
+.formulario{
+    
+    display: flex;
+    
+    flex-direction: row; 
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    
+    text-align: center;
+    font-family: 'Averia Libre';
+    font-style: normal;
+    font-size: 24px;
+    color: #419ED7;
+
+}
+.rotulos{
+    display: flex;
+    flex-direction: column;
+    
+    row-gap: 18px; 
+    margin-bottom:  10px;
+
+}
+
+.entradasDados{
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+}
+.cadastre{
+    display: flex;
+    
+}
+#idCadastrar{
+    font-family: 'Averia Libre';
+    font-size: 20px;
+    color: #3F92C5;
+    text-decoration: none;
+}
+.entradasDados input{
+    font-family: 'Averia Libre';
+    font-size: 24px;
+    color: #3F92C5;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+   
+    
+}
+
+.botaoAzul{
+    width: fit-content;
+    padding: 5px;
+    background-color:  #419ED7;
+    border-radius: 10px;
+    font-family: 'Averia Libre';
+    font-style: normal;
+    color: #FFFFFF;
+    font-size: 22px;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 50px;
+}
+
+.botaoVerde{
+    width: fit-content;
+    padding: 5px;
+    background-color: #49B976;
+    border-radius: 10px;
+    font-family: 'Averia Libre';
+    font-style: normal;
+    color: #FFFFFF;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.divRecuperarSenha{
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    align-self: center;
+    margin-top: 0px;
+    text-decoration: none;
+   
+}
+
+.divErroEmailSenha{
+    visibility: hidden;
+
+}
+
+#recuperaSenha{
+    font-size: 16px;
+    font-family: 'Averia Libre';
+    font-style: normal;
+    font-weight: 400;
+    color: #419ED7;
+
+}
+.div_btnRecuperar{
+   
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+
+    text-decoration: none;
+}
+.btn_recuperar{
+background-color: #49B976;
+width: fit-content;
+border-radius: 20px;
+font-family: 'Averia Libre';
+padding: 10px;
+color: #FFFFFF;
+font-size: 20px;
+border-style: solid 2px ;
+stroke: #37BD6D;
+
+cursor: pointer;
+}
+

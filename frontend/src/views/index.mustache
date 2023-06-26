@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Entre ou Cadastre-se</title>
+        <link rel="stylesheet" href="style.css">
+
+
+    </head>
+    <body>
+        <header>
+                <nav>
+                    <div class="classLogo"> 
+                        <img id="logo" alt="Chapéu de cozinheiro" src="imagens/logo.png">
+                        <a href="../index.html"> <h1 id="nome_logo">MyHealth</h1> </a>
+                    </div>
+                </nav>
+
+        </header>
+
+        <main>
+            <div class="classForm">
+                <div class="rotulos">
+
+                </div>
+                <div class="inputs">
+                    <input class="lblTxt" id="txtEmail" name="email" type="email" placeholder="Digite seu email:" data-tipo="email" required>
+                    <input class="lblTxt" id="txtSenha" name="senha" type="password" placeholder="Digite sua senha" data-tipo="senha" required  >
+                    {{#objs}}
+                    <li> {{id}} <a href="/?id = {{id}}"> </a> id {{id}}</li>
+                    <li>{{name}} <a href="/?nome={{nome}}"></a>nome {{nome}} <a href="/tarefas/del/{{id}}">done</a></li>
+                    {{/tasks}}
+                </div>
+
+            </div>
+        </main>
+    </body>
+</html>

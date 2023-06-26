@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+   /* background-color:#ADD5D0; */
+    background-image: linear-gradient(160deg,  #CC5803, #E2711D, #FF9505, #FFB627, #FFC971);   
+    height: 100vh;
+
+    font-family: 'Averia Libre';
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 87px;
+   /* background-color: #8FE1D9;*/
+    align-items: center;
+   
+}
+
+
+/*MENU*/
+
+.btnCadastrarMenu{
+    width: fit-content;
+    padding: 5px;
+    background-color: #49B976;
+    border-radius: 10px;
+    font-family: 'Averia Libre';
+    font-style: normal;
+    color: #FFFFFF;
+    font-size: 15px;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.btnCadastrarMenu:hover{
+    background-color: #2ea55d;
+}
+.menu li{
+    display: inline;
+    list-style-type: none;
+    text-decoration: none;
+    padding: 10px;
+    
+    
+    border-radius: 10px;
+}
+.textMenu{
+    color: #419ED7;
+}
+.menu li:hover{
+    background-color: #FFC971;
+    text-decoration-color: #419ED7;
+    color:blue;
+    
+}
+.menu li::after{
+    color: #419ED7;
+}
+
+
+
+.corpoBody{
+    
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  
+    align-items: center;
+   /* justify-content: center; */
+   
+    font-family: 'Averia Libre';
+    font-style: normal;
+    font-size: 20px;
+    color: #419ED7;
+    margin-bottom: 10px; 
+}
+form{
+    width: 90%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.form-group2{
+    display: flex;
+    flex-direction: row;
+    display: grid;
+    column-gap: 66px;
+    row-gap: 46px;
+    grid-template-columns: auto auto ;
+    grid-template-rows: auto auto ;
+}
+.form-group2 textarea{
+    height: 200px;
+    
+    
+}
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.campo{
+    display: flex;
+    flex-direction: column;
+}
+
+.botaoVerde{
+    width: fit-content;
+    padding: 5px;
+    background-color: #49B976;
+    border-radius: 10px;
+    font-family: 'Averia Libre';
+    font-style: normal;
+    color: #FFFFFF;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+}

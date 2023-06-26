@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="stylesCadastroReceita.css" type='text/css' media="screen">
+    
+    <link rel="stylesheet" href="rodape.css">
+
+   
+  
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Libre&display=swap" rel="stylesheet" type="text/css" media="screen">
+    
+    <title id="pTitle">Criar Receita</title>
+   
+</head>
+
+<body >
+    
+    
+    <header>
+       {{> headerLogado}}
+    </header>
+
+
+
+    <div class="corpoBody"> 
+
+        <form>
+            <div class="form-group">
+              <label for="nome">Nome da Receita:</label>
+              <input type="text" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+              <label for="descricao">Descrição:</label>
+              <textarea id="descricao" name="descricao" required></textarea>
+            </div>
+        </form>
+        
+        <form class="form-group2">
+            <div class="">
+                <label for="ingredientes">Ingredientes:</label>
+                <textarea id="ingredientes" name="ingredientes" required></textarea>
+            </div>
+            <div class="">
+                <label for="modoPreparo">Modo de Preparo:</label>
+                <textarea id="modoPreparo" name="modoPreparo" required></textarea>
+            </div>
+            
+            <div class="">
+                <label for="categoria">Categoria:</label>
+                <select id="categoria" name="categoria">
+                    </select>
+            </div>
+        </form>
+
+
+        <div> <a > 
+            <button id="btnCadastrarReceita" class="botaoVerde" >
+                Cadastrar
+            </button></a>
+        </div>
+
+    </div>
+
+   
+        <footer>
+            {{> rodape}}
+        </footer>
+</body>
+</html>
