@@ -2,6 +2,8 @@ const User = require('../models/User')
 const sequelize = require('../config/database')
 
 const jwt = require('jsonwebtoken');
+const Categoria = require('../models/Categoria');
+const Receita = require('../models/Receita')
 
 require('dotenv').config()
 
@@ -10,7 +12,7 @@ exports.createUser = async (req, res) =>{
     const nome = req.body.nome
     const email = req.body.email
     const password = req.body.password
-    const dataNascimento = req.body.birthdate
+    const dataNascimento = req.body.dataNascimento
 
     console.log("nome "+nome)
     console.log("email "+email)
@@ -29,41 +31,46 @@ exports.createUser = async (req, res) =>{
 }
 
 exports.getUserById = async (req, res) =>{
-    const {id} = req.params
+    const userid = req.userid
+    console.log("id get user -> "+userid)
     try{
-        const user = await User.findByPk(id);
+        const user = await User.findByPk(userid);
+        console.log("user" +user)
         if(user){
-            res.json(user)
+           return res.json(user)
         }else{
-            res.status(404).json({error: 'Usuario nao encontrado'})
+            return res.status(404).json({error: 'Usuario nao encontrado'})
         }
 
     } catch(error){ 
         console.log(error)
-        res.status(500).json({error:"Erro interno"}).json({error:'Erro ao encontrar usuario '})
+        return res.status(500).json({error:"Erro interno"}).json({error:'Erro ao encontrar usuario '})
     
     }
 }
 
 exports.updateUser = async (req, res) =>{
-    const {id} = req.params
-    const {nome, email, password, dataNascimento} = req.body
+    const userid = req.userid
+    const id = req.params.id
+    console.log("update user id -> "+id)
+    const nome = req.body.nome
+    const email = req.body.email
+    const password = req.body.password
+    const dataNascimento = req.body.dataNascimento
+
     try{
-        const user = await User.findByPk(id)
+        const user = await User.findByPk(userid)
         if(user){
             user.nome = nome
             user.email = email
             user.password = password
             user.dataNascimento = dataNascimento
             await user.save()
-            return res.json(user)
-             
+            return res.status(200).json(user)
             
-
         } else {
-            res.status(404).json({error: 'Usuario nao existe'})
-            throw new Error('Usuário não existe')
-            
+           return res.status(404).json({error: 'Usuario nao existe'})
+          
         }
     } catch(error){
         
@@ -73,12 +80,47 @@ exports.updateUser = async (req, res) =>{
 }
 
 exports.deleteUser = async (req, res) => {
-    const { id } = req.params;
+    const userid = req.userid 
+    console.log("update user id -> "+userid)
     try {
-      const user = await User.findByPk(id);
+      const user = await User.findByPk(userid);
+
       if (user) {
-        await user.destroy();
-        res.json({ message: 'Usuario excluido com sucesso' });
+
+        const categorias = await Categoria.findAll({where : {userid : userid}})
+        const receitas = await Receita.findAll({where : {userid : userid}})
+
+        const listCat = categorias.map(cat => ({
+            idCategoria : cat.idCategoria,
+            nomeCategoria: cat.nomeCategoria,
+            descricao: cat.descricao
+
+        }))
+        
+        const listRec = receitas.map(rec => ({
+            idReceita : rec.idReceita,
+            nomeReceita : rec.nomeReceita,
+            idCategoria : rec.idCategoria
+        }))
+
+        for( let i = 0 ; i < listRec.length ; i++){
+            var rec = listRec[i]
+            console.log('receita a ser excluida' + JSON.stringify(rec));
+            await Receita.destroy({where : {idReceita : rec.idReceita}})
+        }
+        
+        for(let i=0;i<categorias.length ;i++){
+            let cat = categorias[i]
+            console.log('receita a ser excluida' + JSON.stringify(cat));
+           await Categoria.destroy({ where : { idCategoria :cat.idCategoria }})
+
+        }
+         //   await user.destroy()
+            //res.send('usuario deletado')
+           
+      
+        await user.destroy({where : {userid : userid}});
+        return res.json({ message: 'Usuario excluido com sucesso' });
       } else {
         res.status(404).json({ error: 'Usuario nao encontrado.' });
       }
@@ -130,7 +172,7 @@ exports.deleteUser = async (req, res) => {
 
         const listaUsers =  users.map(user => ({
            userid : user.userid,
-           name: user.name, 
+           nome: user.nome, 
            email : user.email,
            dataNascimento: user.dataNascimento
 
@@ -150,7 +192,7 @@ exports.deleteUser = async (req, res) => {
 }
 
 
-
+/*
 exports.autenticacaoToken = (req, res, next) => {
     const token = req.query.token; // Obtém o token da URL
     console.log("tokennn "+token)
@@ -182,3 +224,4 @@ exports.verificacaoToken = (req, res, next) =>{
         console.log(error)
     }
 }
+*/

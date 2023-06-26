@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken')
 module.exports = {
     validarJwt : function(req, res, next){
         const token = req.headers.token
+        
         //const token = req.headers.authorization
         const userid = req.headers.userid
         console.log("verificando userid -> "+userid)

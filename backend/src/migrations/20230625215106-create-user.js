@@ -13,6 +13,19 @@ module.exports = {
       updatedAt: {allowNull:false, type:Sequelize.DATE},
   
      })
+
+     await queryInterface.addConstraint('Users', {
+      fields: ['userid'],
+      type: 'foreign key',
+      name: 'FK_Users_Categorias_userid',
+      references: {
+        table: 'Categorias',
+        field: 'userid',
+      },
+      onDelete: 'CASCADE', // Adicione essa opção para exclusão em cascata
+    });
+
+
   },
 
   async down (queryInterface, Sequelize) {

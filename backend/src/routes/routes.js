@@ -24,21 +24,34 @@ router.post('/login', loginControl.login)
 router.post('/cadastro_usuario',  userControl.createUser )
 router.get('/listar_usuarios', userControl.listarUsuarios )
 
-//rotas privadas
+//rotas privadas receita
 router.post('/cadastro_receita',autenticacaoToken.validarJwt, receitaControl.createReceita )
 
 router.put('/alterar_receita/:id' , autenticacaoToken.validarJwt,receitaControl.updateReceita)
 router.get('/minhas_receitas',autenticacaoToken.validarJwt,  receitaControl.listarReceitas)
 router.delete('/deletar_receita/:id', autenticacaoToken.validarJwt, receitaControl.deleteReceita)
 
+
+//rotas privadas categoria
+
 router.post('/cadastro_categoria', autenticacaoToken.validarJwt , categoriaControl.createCategoria)
 router.get('/listar_categorias', autenticacaoToken.validarJwt, categoriaControl.listarCategorias)
+router.put('/atualizar_categoria/:id', autenticacaoToken.validarJwt, categoriaControl.updateCategoria)
+router.delete('/deletar_categoria/:id',autenticacaoToken.validarJwt, categoriaControl.deleteCategoria)
+// rotas de categoria prontas
 
 
-router.put('/user/:userid', )
-router.post('/cadastro_usuario',userControl.createUser )
+//rotas privadas de usuario
 
-router
+router.get('/perfil',autenticacaoToken.validarJwt, userControl.getUserById ) //ok
+//router.post('/cadastro_usuario',userControl.createUser )
+router.put('/atualizar_usuario/:id', autenticacaoToken.validarJwt, userControl.updateUser) 
+//rota acima também funciona so precisa alterar o id da busca
+router.put('/atualizar_usuario', autenticacaoToken.validarJwt, userControl.updateUser)
+router.delete('/deletar_usuario/:id', autenticacaoToken.validarJwt, userControl.deleteUser)
+router.delete('/deletar_usuario', autenticacaoToken.validarJwt, userControl.deleteUser)
+
+
 module.exports = router
 
 

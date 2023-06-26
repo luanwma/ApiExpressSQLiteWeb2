@@ -26,7 +26,7 @@ exports.createReceita = async (req, res) =>{
 }
 
 exports.updateReceita = async (req, res) =>{
-    const  idReceita = req.params.idReceita
+    const  idReceita = req.headers.idReceita
     const nomeReceita = req.body.nomeReceita
     const idCategoria = req.body.idCategoria
     const descricao = req.body.descricao
@@ -38,7 +38,7 @@ exports.updateReceita = async (req, res) =>{
         if(receita){
             receita.nomeReceita =  nomeReceita
             receita.idCategoria =   idCategoria
-            receita.userid =    userId
+           // receita.userid =    userId
             receita.descricao = descricao
             receita.ingredientes = ingredientes
             receita.modoPreparo = modoPreparo
