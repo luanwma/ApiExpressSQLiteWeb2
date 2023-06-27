@@ -6,6 +6,8 @@ const jwt = require('jsonwebtoken')
 
 exports.login = async (req, res) =>{
     console.log('login')
+    console.log("email -> "+req.body.email)
+    console.log("pass -> "+req.body.password)
     const email = req.body.email
     const password = req.body.password
 
@@ -17,7 +19,8 @@ exports.login = async (req, res) =>{
 
             const token = jwt.sign({id : user.userid} , process.env.JWT_PRIVATE_KEY, {expiresIn:'1h'})
             console.log("token jwt -> "+token)
-            return res.json({token : token})
+           
+            return res.redirect('/cadastro_receita')
         }
     }catch(error){
         return res.status(500).json({error : error})

@@ -14,10 +14,12 @@
 
 
     <body>
+    
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"> </script>
         {{> headerNaoLogado}}
       
 
-        <form class="corpoBody" action="/login" method="POST">
+        <form id="form_login" class="corpoBody">
 
             
             <div class="formulario" >
@@ -30,17 +32,17 @@
     
                     <input name="email" id="email" type="email" placeholder="Insira seu email" data-tipo="email" required class="txtEntrada">
     
-                    <input class="txtEntrada" name="password" id="senha"  type="password" placeholder="Digite sua senha" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*[ !@#$%^&*_=+-]).{6,12}$" 
-                    title="A senha deve conter entre 6 a 12 caracteres, deve conter pelo menos uma letra maiúscula, um número e não deve conter símbolos." data-tipo="senha" required>
-    
+                    <input class="txtEntrada" name="password" id="senha"  type="password" placeholder="Digite sua senha"  data-tipo="senha" required>
+                    <!-- pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*[ !@#$%^&*_=+-]).{6,12}$" 
+                    title="A senha deve conter entre 6 a 12 caracteres, deve conter pelo menos uma letra maiúscula, um número e não deve conter símbolos."--> 
                 </div>
                 
-                
+               
 
             </div>
             <div class="" >
-                        <input type="submit" value="Entrar" id="btnLogin" class="botaoVerde" />
-                </div>
+                <input type="submit" value="Entrar" id="btnLogin" class="botaoVerde" />
+            </div>
 
           
             <div class="cadastre">
@@ -60,6 +62,10 @@
         <footer>
             {{> rodape}}
         </footer>
+
+        <script type="module" src="./scripts/LoginControl.js">
+           
+        </script>
     </body>
 
 

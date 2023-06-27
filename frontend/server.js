@@ -3,6 +3,7 @@ const app = express()
 const path = require('path')
 
 require('dotenv').config()
+const axios = require('axios')
 
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
@@ -12,12 +13,13 @@ app.use(express.json())
 
 const mustacheExpress = require('mustache-express');
 app.engine("mustache", mustacheExpress())
-app.set("views", path.join(__dirname, "./src/views"))
+app.set("views", path.join(__dirname, "./src", "/views"))
 app.set("view engine", "mustache")
 console.log(__dirname)
 
-app.use(express.static(path.join(__dirname,'./src/views')))
+app.use(express.static(path.join(__dirname,'./src','/views')))
 
+const nodemailer = require('nodemailer')
 
 
 //rotas
@@ -38,7 +40,7 @@ app.get('/recuperar_senha', (req, res) =>{
 app.get('/cadastro_usuario', (req, res) =>{
     res.render('cadastro_usuario')
 })
-
+/*
 app.get('/cadastro_receita', (req, res) =>{
     res.render('cadastro_receita')
 })
@@ -50,6 +52,7 @@ app.get('/minhas_receitas', (req, res) =>{
 app.get('/cadastro_categoria', (req, res) =>{
     res.render('cadastro_categoria')
 })
+*/
 
 app.get('/contato', (req, res) =>{
     res.render('contato')
@@ -109,13 +112,14 @@ app.get('/sobre', (req, res) =>{
 app.get('/tecnologias', (req, res) =>{
     res.render('tecnologias')
 })
-
+/*
 app.post('/cadastro_receitas', (req, res) =>{
     const {titulo} = req.body;
 })
+*/
 
 
-
+/*
 app.get('/login', (req, res) =>{
    
     res.sendFile(path.join(__dirname, '../view', 'login.mustache'))
@@ -155,8 +159,30 @@ app.get('/sobre', (req, res) =>{
     res.sendFile(path.join(__dirname, '../view', 'sobre.html'))
 })
 
+*/
 
-const nodemailer = require('nodemailer')
+
+async function fetchItems(query) {
+    try {
+        const url = `http://localhost:3001/api/login${query ? `?query=${query}` : ''}`
+        const response = await axios.get(url)
+        const items = response.data
+        return items
+    } catch (error) {
+        console.error('Error fetching items:', error.message)
+    }
+}
+async function fetchCreatures(query) {
+    try {
+        const url = `http://localhost:3001/api/creatures${query ? `?query=${query}` : ''}`
+        const response = await axios.get(url)
+        const creatures = response.data
+        return creatures
+    } catch (error) {
+        console.error('Error fetching items:', error.message)
+    }
+}
+
 
 
 

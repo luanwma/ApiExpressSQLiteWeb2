@@ -26,7 +26,7 @@ exports.createUser = async (req, res) =>{
         return res.json(novoUser)
     }catch(error){
         console.log(error)
-        res.status(500).json({error:'Erro ao criar usuario.'})
+        return res.status(500).json({error:'Erro ao criar usuario.'})
     }
 }
 
@@ -75,7 +75,7 @@ exports.updateUser = async (req, res) =>{
     } catch(error){
         
         console.log(error)
-        res.status(500).json({error :'Erro ao encontrar usuario'})
+        return res.status(500).json({error :'Erro ao encontrar usuario'})
     }
 }
 
@@ -122,11 +122,11 @@ exports.deleteUser = async (req, res) => {
         await user.destroy({where : {userid : userid}});
         return res.json({ message: 'Usuario excluido com sucesso' });
       } else {
-        res.status(404).json({ error: 'Usuario nao encontrado.' });
+        return res.status(404).json({ error: 'Usuario nao encontrado.' });
       }
     } catch (error) {
       console.log(error);
-      res.status(500).json({ error: 'Erro ao excluir o usuario.' });
+      return res.status(500).json({ error: 'Erro ao excluir o usuario.' });
     }
   };
 
@@ -188,6 +188,66 @@ exports.deleteUser = async (req, res) => {
         return res.status(200).json(listaUsers)
     }catch(error){
         console.log('erro')
+    }
+}
+
+exports.impressaoRelatorio = async (req, res)=>{
+    const userid = req.userid 
+    console.log("update user id -> "+userid)
+    
+    try {
+
+        const buscaCat = await Categoria.findAll({where : {userid : userid}})
+        console.log(buscaCat)
+        const buscaReceitas =  await Receita.findAll({where : {userid : userid}})
+        console.log(buscaReceitas)
+        var impressao = {}
+        if (buscaCat) {
+            var i =0 
+            const listC = buscaCat.map(cat => ({
+              idCategoria : cat.idCategoria,
+              nomeCategoria: cat.nomeCategoria,
+             
+              
+            }));
+            console.log("list C ->"+listC.idCategoria)
+
+            const listR = buscaReceitas.map( rec =>({
+                idReceita : rec.idReceita,
+                nomeReceita : rec.nomeReceita,
+
+
+            }))
+            let receitas = []
+            console.log("list R ->"+listR.idReceita)
+
+            for (let i = 0; i < listC.length; i++) {
+                const cat = listC[i];
+                const idCat = cat.idCategoria
+               
+                for (var j=0 ;j<listR.length;j++){
+                    if (listR[j].idCategoria == idCat){
+                        receitas.push(listR[j])
+                    }
+                }
+                console.log(receitas)
+                impressao[i]={...cat,...{receitas}}
+                i++
+            }
+            
+                
+                
+              //  await Receita.destroy({ where: { idReceita: rec.idReceita } });
+              
+        
+              //await categoria.destroy();
+              return res.status(200).json({ impressao });
+        } 
+
+        
+    } catch (error) {
+        console.log("Erro ao imprimir categoria " + error);
+        return res.status(500).json({ mensagem: 'Erro ao imprimir categoria' });
     }
 }
 

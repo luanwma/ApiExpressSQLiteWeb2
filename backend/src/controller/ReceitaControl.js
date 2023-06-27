@@ -78,7 +78,7 @@ exports.listarReceitas = async (req, res) =>{
     try{
         const receitas = await Receita.findAll({where : {userid : userId}})
 
-        const listaReceitas = receitas.map(receita => ({
+        const listaReceitas = receitas.map(receita => ( { ["idComponente#"+ receita.idReceita ]:  {
             idReceita:receita.idReceita,
             nomeReceita :receita.nomeReceita,
             descricao:receita.descricao,
@@ -86,7 +86,7 @@ exports.listarReceitas = async (req, res) =>{
             modoPreparo:receita.modoPreparo,
             idCategoria:receita.idCategoria
 
-        }))
+    }}))
 
         return res.status(200).json(listaReceitas)
 
@@ -94,4 +94,24 @@ exports.listarReceitas = async (req, res) =>{
         console.log('Erro ao listar as receitas', error )
         return res.status(500).json({ mensagem : 'Erro ao listar receitas'})
     }
+}
+
+exports.visualizarReceita = async (req, res)=>{
+    const idRec = req.params.id
+    console.log("id rec  "+idRec)
+
+    const receita = await Receita.findByPk(idRec)
+    if(!receita ){
+        return res.status(404).json({message:'Receita não existe'})
+        }
+    else{
+            var dadosReceita = receita.toJSON();
+           // delete dadosReceita['dataCadastro']
+            //delete dadosReceita['updatedAt']
+           // delete dadosReceita['createdAt']
+           return res.status(201).json(receita)
+        }
+        
+
+
 }

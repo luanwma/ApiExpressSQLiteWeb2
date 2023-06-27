@@ -19,7 +19,7 @@ require('dotenv').config()
 
 //rotas publicas
 
-router.post('/login', loginControl.login) 
+router.post('/login', loginControl.login, receitaControl.createReceita) 
 
 router.post('/cadastro_usuario',  userControl.createUser )
 router.get('/listar_usuarios', userControl.listarUsuarios )
@@ -29,6 +29,7 @@ router.post('/cadastro_receita',autenticacaoToken.validarJwt, receitaControl.cre
 
 router.put('/alterar_receita/:id' , autenticacaoToken.validarJwt,receitaControl.updateReceita)
 router.get('/minhas_receitas',autenticacaoToken.validarJwt,  receitaControl.listarReceitas)
+router.get('/minhas_receitas/:id',autenticacaoToken.validarJwt,  receitaControl.visualizarReceita)
 router.delete('/deletar_receita/:id', autenticacaoToken.validarJwt, receitaControl.deleteReceita)
 
 
@@ -50,6 +51,8 @@ router.put('/atualizar_usuario/:id', autenticacaoToken.validarJwt, userControl.u
 router.put('/atualizar_usuario', autenticacaoToken.validarJwt, userControl.updateUser)
 router.delete('/deletar_usuario/:id', autenticacaoToken.validarJwt, userControl.deleteUser)
 router.delete('/deletar_usuario', autenticacaoToken.validarJwt, userControl.deleteUser)
+
+router.get('/impressao_relatorio_usuario/:id', autenticacaoToken.validarJwt, userControl.impressaoRelatorio)
 
 
 module.exports = router

@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-
+const User = require('../models/User')
 
 module.exports = {
     validarJwt : function(req, res, next){
@@ -13,8 +13,11 @@ module.exports = {
             jwt.verify(token, process.env.JWT_PRIVATE_KEY , (erro, decoded) =>{
                 if(!erro && decoded ){
                     console.log("Validação de Token OK")
+                    let user =  User.getById(decoded.id)
+                    
                     req.userid = userid; // Adicione o userid ao objeto req para ser acessado posteriormente
-                    next()
+                    //next()
+                    return res.json({auth:true, user : user.nome})
                     
                 }else{
                     return res.status(403).json({mensagem : 'Token falhou'})
