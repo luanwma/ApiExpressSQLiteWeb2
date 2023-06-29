@@ -192,8 +192,15 @@ exports.deleteUser = async (req, res) => {
 }
 
 exports.impressaoRelatorio = async (req, res)=>{
+    
+    const token = req.headers.token
+    if(!token){
+        return res.status(401).json({mensagem: "token invalido"})
+    }
+    
     const userid = req.userid 
     console.log("update user id -> "+userid)
+
     
     try {
 

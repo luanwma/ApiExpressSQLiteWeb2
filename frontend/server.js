@@ -40,7 +40,7 @@ app.get('/recuperar_senha', (req, res) =>{
 app.get('/cadastro_usuario', (req, res) =>{
     res.render('cadastro_usuario')
 })
-/*
+
 app.get('/cadastro_receita', (req, res) =>{
     res.render('cadastro_receita')
 })
@@ -52,7 +52,7 @@ app.get('/minhas_receitas', (req, res) =>{
 app.get('/cadastro_categoria', (req, res) =>{
     res.render('cadastro_categoria')
 })
-*/
+
 
 app.get('/contato', (req, res) =>{
     res.render('contato')
@@ -162,24 +162,24 @@ app.get('/sobre', (req, res) =>{
 */
 
 
-async function fetchItems(query) {
+async function fetchReceitas(query) {
     try {
-        const url = `http://localhost:3001/api/login${query ? `?query=${query}` : ''}`
+        const url = `http://localhost:3001/api/${query ? `?query=${query}` : ''}`
         const response = await axios.get(url)
-        const items = response.data
+        const receitas = response.data
         return items
     } catch (error) {
-        console.error('Error fetching items:', error.message)
+        console.error('Error fetching receitas:', error.message)
     }
 }
-async function fetchCreatures(query) {
+async function fetchCategorias(query) {
     try {
-        const url = `http://localhost:3001/api/creatures${query ? `?query=${query}` : ''}`
+        const url = `http://localhost:3001/api/minhas_receitas${query ? `?query=${query}` : ''}`
         const response = await axios.get(url)
-        const creatures = response.data
+        const categoria = response.data
         return creatures
     } catch (error) {
-        console.error('Error fetching items:', error.message)
+        console.error('Error fetching categorias:', error.message)
     }
 }
 

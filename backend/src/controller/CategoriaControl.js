@@ -6,6 +6,12 @@ const sequelize = require('../config/database.js')
 require('dotenv').config()
 
 exports.createCategoria = async (req, res) =>{
+    
+    const token = req.headers.token
+    if(!token){
+        return res.status(401).json({mensagem: "token invalido"})
+    }
+    
     const userId = req.userid
     
     console.log("controle userid "+userId)

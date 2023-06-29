@@ -24,18 +24,25 @@ async function dadosUser(data) {
     return await axios.post("http://localhost:3001/api/login", {
     email:data.email, 
     password: data.password
-    })
     
-        .then((response) => {
+   })
+  
+    .then((response) => {
             console.log(response.data.token)
             const token = response.data.token
+            console.log("token cliente -> "+token)
             if (token) {
-                login(data)
+                console.log("logado")
+                console.log("data token ->" +response.data.token)
+                console.log("data user id -> "+response.data.userid)
+                sessionStorage.setItem("jwt", response.data.token)
+                sessionStorage.setItem("userid", response.data.userid)
                 return true
             }
             return false
         })
         .catch((error) => {
+            console.log("email cliente ->"+email)
             console.error("Error:", error)
             return null
         })
@@ -43,6 +50,8 @@ async function dadosUser(data) {
 
 function login(data) {
     console.log("logado")
+    console.log("data token ->" +data.token)
+    console.log("data user id -> "+data.userid)
     sessionStorage.setItem("jwt", data.token)
     sessionStorage.setItem("userid", data.userid)
 }

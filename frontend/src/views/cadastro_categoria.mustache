@@ -14,11 +14,12 @@
 
 
     <body>
+     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"> </script>
         <header>
            {{> headerLogado}}
         </header>
 
-        <div class="corpoBody">
+        <form id="form_cad_categoria" class="corpoBody" >
             <h2> Cadastro de nova Categoria </h2>
 
             
@@ -32,7 +33,7 @@
     
                     <input name="nomecategoria" id="nomecategoria" type="text"  data-tipo="text" required class="txtEntrada">
     
-                    <textarea class="txtEntrada" name="descricao" id="descricaocategoria"  type="text"  data-tipo="textarea" required>
+                    <textarea class="txtEntrada" name="descricao" id="descricao"  type="text"  data-tipo="textarea" required>
                     
                      </textarea>
     
@@ -41,18 +42,21 @@
                 
 
             </div>
-            <div class=""> <a > 
-            <button id="btnCadastrarReceita" class="botaoVerde" >
-                Cadastrar
-            </button></a>
+
+            <div class="" >
+                <input type="submit" value="Cadastrar" id="btnCadastrarCategoria" class="botaoVerde" />
+            </div>
+           
+           
             
-        </div>
+        </form>
             
         </div>
 
         <footer>
             {{> rodape}}
         </footer>
+        <script type="module" src="./scripts/CategoriaControl.js">
     </body>
 
 

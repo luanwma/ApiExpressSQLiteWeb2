@@ -5,22 +5,26 @@ const router = express.Router()
 const bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: false }));
 const autenticacaoToken = require('./middleware')
+const validarUser = require('./middleware')
 
 const loginControl = require('../controller/LoginControler')
 const userControl = require('../controller/UserControl')
 const receitaControl = require('../controller/ReceitaControl')
 const categoriaControl = require('../controller/CategoriaControl')
+const PrimeiroAcesso = require('../controller/PrimeiroAcesso')
 
 router.use(express.json())
 require('dotenv').config()
 
 //jwt instalar jsonwebtoken
 
-
+router.post('/primeiro_acesso',PrimeiroAcesso.createAllData )
 //rotas publicas
 
-router.post('/login', loginControl.login, receitaControl.createReceita) 
 
+
+router.post('/login', loginControl.login) 
+//router.post('/login/:id', loginControl.login, receitaControl.listarReceitas) 
 router.post('/cadastro_usuario',  userControl.createUser )
 router.get('/listar_usuarios', userControl.listarUsuarios )
 
@@ -53,6 +57,8 @@ router.delete('/deletar_usuario/:id', autenticacaoToken.validarJwt, userControl.
 router.delete('/deletar_usuario', autenticacaoToken.validarJwt, userControl.deleteUser)
 
 router.get('/impressao_relatorio_usuario/:id', autenticacaoToken.validarJwt, userControl.impressaoRelatorio)
+
+//router.get('/primeiro_acesso', )
 
 
 module.exports = router
