@@ -7,7 +7,8 @@ const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
 exports.createReceita = async (req, res) =>{
-    const userid = req.userid
+    const userid = req.headers.userid
+    
     console.log("userid em receita -> "+userid)
     const nomeReceita = req.body.nomeReceita
     const idCategoria = req.body.idCategoria

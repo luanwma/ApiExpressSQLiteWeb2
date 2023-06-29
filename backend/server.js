@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser())
 app.use(express.json())
 require('dotenv').config()
-const PrimeiroAcesso = require('./src/controller/PrimeiroAcesso')
+//const PrimeiroAcesso = require('./src/controller/PrimeiroAcesso')
 
 app.use(cors());
 

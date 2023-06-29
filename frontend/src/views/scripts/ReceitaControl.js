@@ -3,7 +3,7 @@
 const api = "http://localhost:3001/api"
 
 var listaCategorias = []
-var catlist = document.getElementById('categorias')
+var catlist = document.getElementById('categoria')
 
 window.addEventListener("load", async function () {
     try {
@@ -12,15 +12,20 @@ window.addEventListener("load", async function () {
             token: sessionStorage.getItem("jwt"),
             userid: sessionStorage.getItem("userid")
           }
-        });
+        })
+
+       
+
+        console.log("user id -> "+sessionStorage.getItem("userid")   )
+        console.log("token -> "+sessionStorage.getItem("jwt") )
     
-        const listaCategorias = response.data;
-       // catlist = document.getElementById('categoria');
+        listaCategorias = response.data;
+        catlist = document.getElementById('categoria');
     
         for (let i = 0; i < listaCategorias.length; i++) {
           const optionElement = document.createElement('option');
-          optionElement.value = array[i];
-          optionElement.textContent = array[i];
+          optionElement.value = listaCategorias[i].idCategoria;
+          optionElement.textContent = listaCategorias[i].nomeCategoria;
           catlist.appendChild(optionElement);
         }
     
@@ -31,6 +36,8 @@ window.addEventListener("load", async function () {
         return null;
       }
 
+      const userid = sessionStorage.getItem("userid")
+      console.log("user id -> "+sessionStorage.getItem("userid")   )
       
         const form1 = document.getElementById("form_receita")
         form1.addEventListener("submit", async (event) => {
@@ -39,6 +46,7 @@ window.addEventListener("load", async function () {
         const descricao = document.getElementById("descricao").value
         const ingredientes = document.getElementById("ingredientes").value
         const modoPreparo = document.getElementById("modoPreparo").value
+        const idCat =  catlist.value
         
         /*const formData1= new FormData(form1)
         const data = Object.fromEntries(formData1.entries()) */
@@ -47,7 +55,7 @@ window.addEventListener("load", async function () {
         console.log("data ingredientes-> "+ingredientes)
         console.log("data modo preparo -> "+modoPreparo) 
         const dados = {nomeReceita : nomeReceita, descricao: descricao , 
-            ingredientes: ingredientes, modoPreparo : modoPreparo , idCategoria:"1"}
+            ingredientes: ingredientes, modoPreparo : modoPreparo , idCategoria:idCat, userid : userid}
 
         console.log(dados)
 
@@ -59,24 +67,27 @@ window.addEventListener("load", async function () {
 }) 
 
 async function addReceita(dados) {
-    console.log("nome "+dados.nome)
+    console.log("nome "+dados.nomeReceita)
+    console.log("add rec "+dados.userid)
     try{ 
         const response = await axios.post("http://localhost:3001/api/cadastro_receita", {
-            nome : dados.nome, 
-            descricao: data.descricao , 
-            ingredientes: data.ingredientes, 
-            modoPreparo : data.modoPreparo, 
-            idCategoria :  data.idCategoria
+            nomeReceita : dados.nomeReceita, 
+            descricao: dados.descricao , 
+            ingredientes: dados.ingredientes, 
+            modoPreparo : dados.modoPreparo, 
+            idCategoria :  dados.idCategoria
         }, { 
             headers:{
             token : sessionStorage.getItem("jwt"),
-            userid : sessionStorage.getItem("userid")
+            userid : dados.userid
         }})
-        console.log(response.data)
+       // console.log("user id -> "+userid )
+       // console.log("token -> "+token )
+        console.log(response)
         return true    
        
     }catch(erro){
-        console.error("erro ao salvar receita "+erro)
+        console.log("erro ao salvar receita "+erro)
         return null
     }
 }

@@ -19,7 +19,7 @@ module.exports = {
                     
                     req.userid = userid; // Adicione o userid ao objeto req para ser acessado posteriormente
                     
-                    return res.json({auth:true, userid : userid})
+                    //res.json({auth: true,userid : userid})
                    next()
                 }else{
                     return res.status(403).json({mensagem : 'Token falhou'})
