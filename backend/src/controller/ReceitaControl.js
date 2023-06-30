@@ -79,6 +79,17 @@ exports.listarReceitas = async (req, res) =>{
     try{
         const receitas = await Receita.findAll({where : {userid : userId}})
 
+        const listaReceitas = receitas.map(receita => (   {
+            idReceita:receita.idReceita,
+            nomeReceita :receita.nomeReceita,
+            descricao:receita.descricao,
+            ingredientes:receita.ingredientes,
+            modoPreparo:receita.modoPreparo,
+            idCategoria:receita.idCategoria
+
+    }))
+
+    /*
         const listaReceitas = receitas.map(receita => ( { ["idComponente#"+ receita.idReceita ]:  {
             idReceita:receita.idReceita,
             nomeReceita :receita.nomeReceita,
@@ -87,7 +98,7 @@ exports.listarReceitas = async (req, res) =>{
             modoPreparo:receita.modoPreparo,
             idCategoria:receita.idCategoria
 
-    }}))
+    }}))*/
 
         return res.status(200).json(listaReceitas)
 

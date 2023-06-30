@@ -56,6 +56,8 @@ app.get('/cadastro_categoria', (req, res) =>{
 
 
 app.get('/contato', (req, res) =>{
+   
+    
     res.render('contato')
 })
 app.post('/contato', (req, res) =>{

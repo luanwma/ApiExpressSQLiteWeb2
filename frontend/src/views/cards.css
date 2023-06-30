@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.corpoBody{
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    
+}
+.card{
+    width: 100px;
+    cursor: pointer;
+}

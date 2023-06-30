@@ -58,7 +58,12 @@ router.delete('/deletar_usuario', autenticacaoToken.validarJwt, userControl.dele
 
 router.get('/impressao_relatorio_usuario/:id', autenticacaoToken.validarJwt, userControl.impressaoRelatorio)
 
-//router.get('/primeiro_acesso', )
+router.get('/contato', autenticacaoToken.validarJwt )
+
+router.get('/deslogar', (req, res) =>{
+  
+    res.redirect('/login')
+})
 
 
 module.exports = router

@@ -7,6 +7,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Averia+Libre&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="stylesContato.css">
         
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"> </script>
+  
         <link rel="stylesheet" href="rodape.css">
         <title id="title">Contato</title>
     
@@ -14,12 +16,16 @@
 
 
     <body>
-        <header>
-            {{> headerNaoLogado}}
+    
+    
+        <header id="headerId1">
+            {{>headerNaoLogado}}
         </header>
-        <!-- "https://api.staticforms.xyz/submit" 
-            https://formsubmit.co/ajax/luanwma@hotmail.com
-        -->
+        <header id="headerId2">
+            {{>headerLogado}}
+        </header>
+        
+       
         <form class="corpoBody" action="/contato" method="POST">
 
             
@@ -53,6 +59,9 @@
         <footer>
             {{> rodape}}
         </footer>
+        <script type="module" src="./scripts/contatoControl.js"> </script>
+        <script type="module" src = "./scripts/Deslogar.js"> </script>
+        
     </body>
 
 

@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css2?family=Averia+Libre&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="stylesSobre.css">
-        
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"> </script>
         <link rel="stylesheet" href="textosobre.css">
         <link rel="stylesheet" href="rodape.css">
         <title id="title">Pagina inicial</title>
@@ -15,9 +15,14 @@
 
 
     <body>
-        <header>
-            
-            {{> headerNaoLogado}}
+    
+       
+    
+        <header id="headerId1">
+            {{>headerNaoLogado}}
+        </header>
+        <header id="headerId2">
+            {{>headerLogado}}
         </header>
 
         <div class="corpoBody">
@@ -29,6 +34,8 @@
         <footer>
             {{> rodape}}
         </footer>
+        <script type="module" src="./scripts/contatoControl.js"> </script>
+        <script type="module" src = "./scripts/Deslogar.js"> </script>
     </body>
 
 

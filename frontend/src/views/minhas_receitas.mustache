@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css2?family=Averia+Libre&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="stylesCadastro.css">
-        
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"> </script>
         <link rel="stylesheet" href="rodape.css">
         <title id="title">Pagina inicial</title>
     
@@ -19,14 +19,17 @@
             {{> headerLogado}}
         </header>
 
-        <div class="corpoBody">
-            {{>cards}}
+        <div id="grade_componentes" class="corpoBody">
+           
                         
         </div>
 
         <footer>
             {{> rodape}}
         </footer>
+
+        <script type="module" src="./scripts/Deslogar.js"> </script>
+         <script type="module" src="./scripts/MinhasReceitasControl.js"> </script>
     </body>
 
 
