@@ -28,7 +28,7 @@
     <div class="corpoBody"> 
 
 
-        <form action="/cadastro_usuario" method="POST">
+        <form id="form_cad_user" >
             <div class="form-group">
               <label for="nome">Nome:</label>
               <input type="text" id="nome" name="nome" required>
@@ -39,15 +39,15 @@
             </div>
             <div class="form-group">
               <label for="senha">Senha:</label>
-              <input type="password" id="senha" name="password" required>
+              <input type="password" id="password" name="password" required>
             </div>
             <div class="form-group">
-              <label for="repetirSenha">Repetir Senha:</label>
-              <input type="password" id="repetirSenha" name="repetirSenha" required>
+              <label for="repeatpassword">Repetir Senha:</label>
+              <input type="password" id="repeatpassword" name="repeatpassword" required>
             </div>
             <div class="form-group">
               <label for="dataNascimento">Data de Nascimento:</label>
-              <input type="date" id="dataNascimento" name="birthdate" required>
+              <input type="date" id="dataNascimento" name="dataNascimento" required>
             </div>
           <!--   <button type="submit">Cadastrar Usuário</button> -->
             <input type="submit" value="Cadastrar" id="btnCadastrarConta" class="botaoVerde" />
@@ -62,7 +62,7 @@
                     <div class="lblTxt"> <label class="input-label" for="data_nasc">Data de Nascimento</label> </div>
                    <div class="lblTxt"><label class="input-label" for="email">Email</label> </div> 
                    <div class="lblTxt">   <label class="input-label" for="senha">Senha</label>      </div> 
-                    <div class="lblTxt">  <label class="input-label" for="repetsenha">Repetir senha</label> </div>
+                    <div class="lblTxt">  <label class="input-label" for="repeatpassword">Repetir senha</label> </div>
                 </div>
 
                 <div class="entradasDados">
@@ -73,11 +73,11 @@
                     <input class="lblTxt" name="data_nasc" id="data_nasc"  type="date" placeholder="dia/mês/ano" data-tipo="data" required>
                     <input class="lblTxt" name="email" id="email" type="email" placeholder="Insira seu email" data-tipo="email" required>
 
-                    <input class="lblTxt" name="password" id="senha"  type="password" placeholder="Crie uma senha" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*[ !@#$%^&*_=+-]).{6,12}$" 
+                    <input class="lblTxt" name="password" id="password"  type="password" placeholder="Crie uma senha" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*[ !@#$%^&*_=+-]).{6,12}$" 
                     title="A senha deve conter entre 6 a 12 caracteres, deve conter pelo menos uma letra maiúscula, um número e não deve conter símbolos." data-tipo="senha" required>
                     
-                    <input class="lblTxt" name="repetsenha" id="repetsenha"  type="password" placeholder="Repita a senha" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*[ !@#$%^&*_=+-]).{6,12}$" 
-                    title="A senha deve conter entre 6 a 12 caracteres, deve conter pelo menos uma letra maiúscula, um número e não deve conter símbolos." data-tipo="repetsenha" required>
+                    <input class="lblTxt" name="repeatpassword" id="repeatpassword"  type="password" placeholder="Repita a senha" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*[ !@#$%^&*_=+-]).{6,12}$" 
+                    title="A senha deve conter entre 6 a 12 caracteres, deve conter pelo menos uma letra maiúscula, um número e não deve conter símbolos." data-tipo="password" required>
                 
                 </div>
                 
@@ -97,20 +97,12 @@
     </div>
 
 
-
-
-     
-       
-
-       
-          
     
     
         <footer>
           {{> rodape}}
         </footer>
-        <script type="module" src="./scripts/LoginControl.js">
-           
-        </script>
+        
+        <script type="module" src="./scripts/CadastroUsuario.js"> </script>
 </body>
 </html>

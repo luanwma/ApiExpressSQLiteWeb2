@@ -5,24 +5,27 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css2?family=Averia+Libre&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="stylesCadastro.css">
+        <link rel="stylesheet" href="./stylesCadastro.css">
+        
+        <link rel="stylesheet" href="./rodape.css">
+        <link rel ="stylesheet" href="./styleReceita.css">
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"> </script>
-        <link rel="stylesheet" href="rodape.css">
-        <link rel ="stylesheet" href="cards.css">
         <title id="title">Pagina inicial</title>
     
     </head>
 
 
     <body>
-        <header id="headerId1">
-            {{>headerNaoLogado}}
-        </header>
+    
+       
         <header id="headerId2">
             {{>headerLogado}}
         </header>
+        
+        
+       
 
-        <div id="grade_componentes" class="corpoBody">
+        <div id="grade_componente" class="corpoBody">
            
                         
         </div>
@@ -31,9 +34,10 @@
             {{> rodape}}
         </footer>
 
-        <script type="module" src="./scripts/Deslogar.js"> </script>
-         <script type="module" src="./scripts/MinhasReceitasControl.js"> </script>
-         <script type="module" src="./scripts/contatoControl.js"> </script>
+       <script type="module" src="/scripts/minhaReceita.js"> </script>
+        <script type="module" src="/scripts/Deslogar.js"> </script>
+         
+    
     </body>
 
 

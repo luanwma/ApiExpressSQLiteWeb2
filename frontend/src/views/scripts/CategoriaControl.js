@@ -30,6 +30,7 @@ async function addCategoria(dados){
     }).then((response) =>{
         console.log("token cliente ->"+response.data.token)
         const token = response.data.token
+        window.location.href="/cadastro_receita"
     }).catch( (error) =>{
         console.error("erro ao salvar categoria -> "+error)
         return null

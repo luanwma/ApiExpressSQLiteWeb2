@@ -27,7 +27,8 @@ exports.createReceita = async (req, res) =>{
 }
 
 exports.updateReceita = async (req, res) =>{
-    const  idReceita = req.headers.idReceita
+    const idRec = req.params.idReceita
+    //const  idReceita = req.headers.idReceita
     const nomeReceita = req.body.nomeReceita
     const idCategoria = req.body.idCategoria
     const descricao = req.body.descricao
@@ -35,7 +36,7 @@ exports.updateReceita = async (req, res) =>{
     const modoPreparo = req.body.modoPreparo
     try{
 
-        const receita = await Receita.findByPk(idReceita)
+        const receita = await Receita.findByPk(idRec)
         if(receita){
             receita.nomeReceita =  nomeReceita
             receita.idCategoria =   idCategoria
@@ -50,7 +51,7 @@ exports.updateReceita = async (req, res) =>{
       
     }catch(error){
         console.log("Erro ao editar receita: ", error);
-        return res.status(500).json({error:'Erro ao editar receita'})
+        return res.status(500).json({error:'Erro ao editar receita'+error})
     }
 }
 
@@ -62,12 +63,12 @@ exports.deleteReceita = async (req, res) =>{
             await receita.destroy()
             return res.sendStatus(204).json({mensagem : 'Receita excluida'})
         }else{
-            return res.status(404).json({error: 'Receita nao encontrada'})
+            return res.status(404).json({error: 'Receita nao encontrada'+error})
         }
 
     }catch(error){
         console.log("Erro ao deletar receita: ", error);
-        return res.status(500).json({error : 'Erro ao excluir receita'})
+        return res.status(500).json({error : 'Erro ao excluir receita'+error})
     }
 }
 
@@ -104,24 +105,25 @@ exports.listarReceitas = async (req, res) =>{
 
     }catch(error){
         console.log('Erro ao listar as receitas', error )
-        return res.status(500).json({ mensagem : 'Erro ao listar receitas'})
+        return res.status(500).json({ mensagem : 'Erro ao listar receitas'+error})
     }
 }
 
 exports.visualizarReceita = async (req, res)=>{
-    const idRec = req.params.id
+    const idRec = req.params.idReceita
     console.log("id rec  "+idRec)
 
     const receita = await Receita.findByPk(idRec)
     if(!receita ){
-        return res.status(404).json({message:'Receita não existe'})
+        return res.status(404).json({message:'Receita não existe' +receita})
         }
     else{
             var dadosReceita = receita.toJSON();
            // delete dadosReceita['dataCadastro']
             //delete dadosReceita['updatedAt']
            // delete dadosReceita['createdAt']
-           return res.status(201).json(receita)
+           console.log(receita)
+           return res.status(200).json(receita)
         }
         
 

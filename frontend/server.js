@@ -14,6 +14,9 @@ app.use(express.json())
 const mustacheExpress = require('mustache-express');
 app.engine("mustache", mustacheExpress())
 app.set("views", path.join(__dirname, "./src", "/views"))
+app.use('/scripts', express.static(path.join(__dirname, 'frontend/src/views/scripts')))
+app.use('/imagens', express.static(path.join(__dirname, 'frontend/src/views/imagens')))
+app.use('/css', express.static(path.join(__dirname, 'frontend/src/views')));
 app.set("view engine", "mustache")
 console.log(__dirname)
 
@@ -48,6 +51,16 @@ app.get('/cadastro_receita', (req, res) =>{
 app.get('/minhas_receitas', (req, res) =>{
     res.render('minhas_receitas')
 })
+
+app.get('/minha_receita/:idReceita', async (req, res) =>{
+  
+      res.render('minha_receita');
+   
+  })
+
+
+  
+   
 
 app.get('/cadastro_categoria', (req, res) =>{
     res.render('cadastro_categoria')
@@ -163,29 +176,6 @@ app.get('/sobre', (req, res) =>{
 })
 
 */
-
-
-async function fetchReceitas(query) {
-    try {
-        const url = `http://localhost:3001/api/${query ? `?query=${query}` : ''}`
-        const response = await axios.get(url)
-        const receitas = response.data
-        return items
-    } catch (error) {
-        console.error('Error fetching receitas:', error.message)
-    }
-}
-async function fetchCategorias(query) {
-    try {
-        const url = `http://localhost:3001/api/minhas_receitas${query ? `?query=${query}` : ''}`
-        const response = await axios.get(url)
-        const categoria = response.data
-        return creatures
-    } catch (error) {
-        console.error('Error fetching categorias:', error.message)
-    }
-}
-
 
 
 

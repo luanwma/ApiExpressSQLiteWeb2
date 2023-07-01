@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.corpoBody{
+    width: 90%;
+    height: 90%;
+
+}
+.corpoBody h3 {
+    font-size: 24px;
+    text-align: center;
+    
+}
+

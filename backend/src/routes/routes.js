@@ -17,7 +17,7 @@ router.use(express.json())
 require('dotenv').config()
 
 //jwt instalar jsonwebtoken
-
+// rota para criar o banco de dados do zero com varios registros para uso apenas no servidor do back
 router.post('/primeiro_acesso',PrimeiroAcesso.createAllData )
 //rotas publicas
 
@@ -33,7 +33,7 @@ router.post('/cadastro_receita',autenticacaoToken.validarJwt, receitaControl.cre
 
 router.put('/alterar_receita/:id' , autenticacaoToken.validarJwt,receitaControl.updateReceita)
 router.get('/minhas_receitas',autenticacaoToken.validarJwt,  receitaControl.listarReceitas)
-router.get('/minhas_receitas/:id',autenticacaoToken.validarJwt,  receitaControl.visualizarReceita)
+router.get('/minha_receita/:idReceita',autenticacaoToken.validarJwt,  receitaControl.visualizarReceita)
 router.delete('/deletar_receita/:id', autenticacaoToken.validarJwt, receitaControl.deleteReceita)
 
 
@@ -41,7 +41,7 @@ router.delete('/deletar_receita/:id', autenticacaoToken.validarJwt, receitaContr
 
 router.post('/cadastro_categoria', autenticacaoToken.validarJwt , categoriaControl.createCategoria)
 router.get('/listar_categorias', autenticacaoToken.validarJwt, categoriaControl.listarCategorias)
-router.put('/atualizar_categoria/:id', autenticacaoToken.validarJwt, categoriaControl.updateCategoria)
+router.put('/alterar_categoria/:id', autenticacaoToken.validarJwt, categoriaControl.updateCategoria)
 router.delete('/deletar_categoria/:id',autenticacaoToken.validarJwt, categoriaControl.deleteCategoria)
 // rotas de categoria prontas
 

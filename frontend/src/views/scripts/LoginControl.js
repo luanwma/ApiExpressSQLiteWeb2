@@ -37,7 +37,7 @@ async function dadosUser(data) {
                 console.log("data user id -> "+response.data.userid)
                 sessionStorage.setItem("jwt", response.data.token)
                 sessionStorage.setItem("userid", response.data.userid)
-                return true
+                window.location.href="/minhas_receitas"
             }
             return false
         })
