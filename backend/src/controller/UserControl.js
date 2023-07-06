@@ -12,12 +12,19 @@ exports.createUser = async (req, res) =>{
     const nome = req.body.nome
     const email = req.body.email
     const password = req.body.password
+    // verificar senhas iguais no back
+    const repeatPassword =  req.body.repeatpassword
     const dataNascimento = req.body.dataNascimento
+
 
     console.log("nome "+nome)
     console.log("email "+email)
     console.log("senha "+password)
     console.log("dataNascimento "+dataNascimento)
+
+    if(password != repeatPassword){
+        return res.status(400).json({'menssagem': "Senhas diferentes"})
+    }
     
 
     try{

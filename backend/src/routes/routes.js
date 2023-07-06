@@ -34,7 +34,7 @@ router.post('/cadastro_receita',autenticacaoToken.validarJwt, receitaControl.cre
 router.put('/alterar_receita/:id' , autenticacaoToken.validarJwt,receitaControl.updateReceita)
 router.get('/minhas_receitas',autenticacaoToken.validarJwt,  receitaControl.listarReceitas)
 router.get('/minha_receita/:idReceita',autenticacaoToken.validarJwt,  receitaControl.visualizarReceita)
-router.delete('/deletar_receita/:id', autenticacaoToken.validarJwt, receitaControl.deleteReceita)
+router.delete('/deletar_receita/:idReceita', autenticacaoToken.validarJwt, receitaControl.deleteReceita)
 
 
 //rotas privadas categoria

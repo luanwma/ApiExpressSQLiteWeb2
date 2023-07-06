@@ -38,6 +38,7 @@ window.addEventListener("load", async function () {
                 nome : data.nome , 
                 email : data.email, 
                 password : data.password , 
+                repeatpassword : data.repeatpassword,
                 dataNascimento : data.dataNascimento
             }).then( (response) =>{
                 console.log(response.data)

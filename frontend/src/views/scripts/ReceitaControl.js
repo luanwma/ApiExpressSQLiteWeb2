@@ -84,7 +84,7 @@ async function addReceita(dados) {
        // console.log("user id -> "+userid )
        // console.log("token -> "+token )
         console.log(response)
-        return true    
+        window.location.href="/minhas_receitas"  
        
     }catch(erro){
         console.log("erro ao salvar receita "+erro)

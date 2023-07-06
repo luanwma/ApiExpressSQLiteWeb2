@@ -56,20 +56,28 @@ exports.updateReceita = async (req, res) =>{
 }
 
 exports.deleteReceita = async (req, res) =>{
-    const idReceita = req.params.idReceita
-    try{
-        const receita = await Receita.findByPk(idReceita)
+    const idRec = req.params.idReceita
+    console.log("id rec  "+idRec)
+
+    try {
+        const receita = await Receita.findByPk(idRec)
         if(receita){
             await receita.destroy()
-            return res.sendStatus(204).json({mensagem : 'Receita excluida'})
+            return res.status(201)
+           
         }else{
-            return res.status(404).json({error: 'Receita nao encontrada'+error})
+            console.log("Erro ao deletar receita: ");
+            return res.status(500).json({error : 'Erro ao deletar receita'})
         }
 
-    }catch(error){
-        console.log("Erro ao deletar receita: ", error);
-        return res.status(500).json({error : 'Erro ao excluir receita'+error})
+    } catch (error) {
+        console.log('Erro ao deletar a receita', error )
+        return res.status(500).json({ mensagem : 'Erro ao encontrar receita'+error})
     }
+
+    
+    
+  
 }
 
 exports.listarReceitas = async (req, res) =>{
@@ -90,16 +98,7 @@ exports.listarReceitas = async (req, res) =>{
 
     }))
 
-    /*
-        const listaReceitas = receitas.map(receita => ( { ["idComponente#"+ receita.idReceita ]:  {
-            idReceita:receita.idReceita,
-            nomeReceita :receita.nomeReceita,
-            descricao:receita.descricao,
-            ingredientes:receita.ingredientes,
-            modoPreparo:receita.modoPreparo,
-            idCategoria:receita.idCategoria
-
-    }}))*/
+   
 
         return res.status(200).json(listaReceitas)
 
