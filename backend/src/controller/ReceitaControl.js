@@ -44,7 +44,7 @@ exports.createReceita = async (req, res) =>{
 exports.updateReceita = async (req, res) =>{
     const idRec = req.params.id
     const userid = req.userid
-    //const  idReceita = req.headers.idReceita
+   
     const nomeReceita = req.body.nomeReceita
     const idCategoria = req.body.idCategoria
     console.log("id categoria dentro da receita "+idCategoria)
@@ -55,9 +55,6 @@ exports.updateReceita = async (req, res) =>{
     const modoPreparo = req.body.modoPreparo
     console.log("user id update "+userid)
     console.log("idrec params "+idRec)
-
-
-    //impedir que um usuario altere uma receita que não é dele e nenhum outro campo
 
 
     try{
@@ -83,20 +80,7 @@ exports.updateReceita = async (req, res) =>{
         }else{
             console.log("usuario nao existe ")
         }
-        /*
-        const receita = await Receita.findByPk(idReceita)
-        if(receita){
-            receita.nomeReceita =  nomeReceita
-            receita.idCategoria =   idCategoria
-           // receita.userid =    userId
-            receita.descricao = descricao
-            receita.ingredientes = ingredientes
-            receita.modoPreparo = modoPreparo
-            await receita.save();
-
-            return res.sendStatus(204).json(receita)
-        }
-        */
+       
       
     }catch(error){
         console.log("Erro ao editar receita: ", error);
@@ -106,18 +90,25 @@ exports.updateReceita = async (req, res) =>{
 
 exports.deleteReceita = async (req, res) =>{
     const idRec = req.params.idReceita
+    const userid = req.userid
     console.log("id rec  "+idRec)
 
     try {
-        const receita = await Receita.findByPk(idRec)
-        if(receita){
-            await receita.destroy()
-            return res.status(201)
-           
-        }else{
-            console.log("Erro ao deletar receita: ");
-            return res.status(500).json({error : 'Erro ao deletar receita'})
+        const user =  await User.findByPk(userid)
+        if(user){
+            const receita = await Receita.findByPk(idRec)
+            if(receita && user.userid == receita.userid){
+                await receita.destroy()
+                console.log("deletando...")
+                res.status(201).json({mensagem: "Receita deletado com sucesso"})
+               
+            }else{
+                console.log("Erro ao deletar receita: ");
+                return res.status(500).json({error : 'Erro ao deletar receita'})
+            }
         }
+        
+       
 
     } catch (error) {
         console.log('Erro ao deletar a receita', error )
@@ -160,19 +151,32 @@ exports.listarReceitas = async (req, res) =>{
 exports.visualizarReceita = async (req, res)=>{
     const idRec = req.params.idReceita
     console.log("id rec  "+idRec)
+    const userid = req.userid
+    console.log("id rec  "+idRec)
 
-    const receita = await Receita.findByPk(idRec)
-    if(!receita ){
-        return res.status(404).json({message:'Receita não existe' +receita})
+    try {
+        const user =  await User.findByPk(userid)
+        if(user){
+            const receita = await Receita.findByPk(idRec)
+            if(receita && user.userid == receita.userid){
+                console.log(receita)
+                return res.status(200).json(receita)
+               
+            }else{
+                console.log("Erro ao visualizar receita: ");
+                return res.status(404).json({message:'Receita não existe'})
+            }
+        }else{
+            return res.status(404).json({mensagem : "Usuario inválido" })
         }
-    else{
-            var dadosReceita = receita.toJSON();
-           // delete dadosReceita['dataCadastro']
-            //delete dadosReceita['updatedAt']
-           // delete dadosReceita['createdAt']
-           console.log(receita)
-           return res.status(200).json(receita)
-        }
+        
+       
+
+    } catch (error) {
+        console.log('Erro ao abrir a receita', error )
+        return res.status(500).json({ mensagem : 'Erro ao encontrar receita'+error})
+    }
+   
         
 
 

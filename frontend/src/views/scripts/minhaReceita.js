@@ -110,12 +110,12 @@ async function deleteReceita(event, idReceita){
       
     })
     console.log("delete receita ")
-    window.location.href = "http/minhas_receitas"
+    window.location.href = "http://localhost:3000/minhas_receitas"
    // window.location.replace("/minhas_receitas")
   } catch (error) {
     console.error("Erro ao deletar receita:", error)
   }finally{
-    window.location.href = "/minhas_receitas"
+    window.location.href = "http://localhost:3000/minhas_receitas"
   }
   
 }

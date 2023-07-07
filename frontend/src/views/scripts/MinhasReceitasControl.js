@@ -89,9 +89,6 @@ window.addEventListener("load", async function () {
         */
 
 
-       
-
-
 
         
     } catch (error) {
@@ -133,7 +130,7 @@ function addClickEvent(componentId) {
       
     })
   }
-
+  /*
   function addExcluirEvent(componenteId){
     const delCard = document.getElementById(componenteId);
     delCard.addEventListener("click", async () =>{
@@ -148,15 +145,23 @@ function addClickEvent(componentId) {
             
           }
         })
+       
+        window.location.href = "http://localhost:3000/minhas_receitas"
         
       } catch (error) {
         console.log("Erro ao excluir receita:", error)
       }
     })
   }
+  */
 
   function abrirMais(listaReceitas){
-    pagAtual
+    
+    
+    
+    if(pagAtual >= listaReceitas.length){
+      pagAtual = listaReceitas.length
+    }
 
     var body = document.getElementById('grade_componentes');
     
@@ -184,7 +189,7 @@ function addClickEvent(componentId) {
      // console.log("temp id "+tempId)
       selectCard = document.getElementById(tempId)
     //  console.log(selectCard)
-
+      index = pagAtual
     
     
    
