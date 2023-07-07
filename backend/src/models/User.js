@@ -13,7 +13,13 @@ const User = sequelize.define('User', {
          dataNascimento : {
              type: DataTypes.DATE,
              allowNull: true,
-         },
+         }, 
+         loginCount: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0
+        } 
+
+
 
 
          

@@ -9,6 +9,7 @@ module.exports = {
       email:{ type: DataTypes.STRING, allowNull: false , unique:true},
       password:{ type: DataTypes.STRING, allowNull: false, select: false},
       dataNascimento : {type: DataTypes.DATE, allowNull: true},
+     // loginCount: {type: DataTypes.INTEGER, defaultValue: 0 },
       createdAt: {allowNull:false, type:Sequelize.DATE},
       updatedAt: {allowNull:false, type:Sequelize.DATE},
   

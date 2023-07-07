@@ -18,11 +18,14 @@ exports.login = async (req, res, next) =>{
             //create token
             let payload = {}
             console.log(user)
+            console.log("quantidade de logins "+user.loginCount)
 
             const token = jwt.sign({id : user.userid} , process.env.JWT_PRIVATE_KEY, {expiresIn:'1h'})
             console.log("token jwt -> "+token)
             
+            
             res.status(200).json({token:token, userid : user.userid})
+            user.increment('loginCount')
             next()
            // return res.redirect('/cadastro_receita')
         }else{
