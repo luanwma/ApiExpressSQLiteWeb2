@@ -61,9 +61,13 @@ exports.listarCategorias = async (req, res) =>{
 }
 
 exports.updateCategoria = async(req, res) =>{
+
+
     const idCategoria = req.params.id
     console.log("id cat "+idCategoria)
     const userId = req.userid
+
+
     console.log("id user "+userId)
     
     const obj = req.body
@@ -74,8 +78,8 @@ exports.updateCategoria = async(req, res) =>{
     
     console.log("descricao cat -> "+descricao)
     try {
-        const categoria = await Categoria.findOne({where: {idCategoria : idCategoria,  userid : userId}})
-        if(categoria){
+        const categoria = await Categoria.findByPk(idCategoria)
+        if(categoria && categoria.userid === userId){
             categoria.nomeCategoria = nomeCategoria
             categoria.descricao = descricao
 

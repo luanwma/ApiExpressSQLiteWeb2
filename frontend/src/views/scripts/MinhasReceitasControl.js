@@ -39,7 +39,7 @@ window.addEventListener("load", async function () {
         body.appendChild(botaoVerMais)
 
         botaoVerMais.addEventListener("click", () => {
-          pagAtual = index+5
+          pagAtual =  index+5
          
           abrirMais(listaReceitas) 
           

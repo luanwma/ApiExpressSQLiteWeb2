@@ -6,15 +6,20 @@ const sequelize = require('../config/database')
 module.exports = {
     validarJwt : function(req, res, next){
         const token = req.headers.token
-        
+        //pegar identificador de usuario do token ao inves do headers
+
+        // tarefaaa aaa 
         //const token = req.headers.authorization
-        const userid = req.headers.userid
-        console.log("verificando userid -> "+userid)
+       // const userid = req.headers.userid
+       
         console.log("verificando token ->"+token)
         try{
             jwt.verify(token, process.env.JWT_PRIVATE_KEY , (erro, decoded) =>{
                 if(!erro && decoded ){
                     console.log("Validação de Token OK")
+
+                    const userid = decoded.id;
+                    console.log("user id pelo token "+userid)
                    // let user =  User.getById(decoded.id)
                     
                     req.userid = userid; // Adicione o userid ao objeto req para ser acessado posteriormente
