@@ -7,12 +7,12 @@ window.addEventListener("load", async function () {
 
     formCadastroUser.addEventListener("submit", async (event) =>{
         event.preventDefault();
-      //  let nome = document.querySelector('#nome').value
+      //  let nome = formCadastroUser.querySelector('#nome').value
       //  console.log("nome  ->" +nome)
-       // let email = document.querySelector("#email").value
-       // let password =document.querySelector("#password").value
-       // let repetpassword =document.querySelector("#repetsenha").value
-      //  let dataNascimento = this.document.querySelector("#birthdate").value
+       // let email = formCadastroUser.querySelector("#email").value
+       // let password =formCadastroUser.querySelector("#password").value
+       // let repetpassword =formCadastroUser.querySelector("#repetsenha").value
+      //  let dataNascimento = formCadastroUser.querySelector("#birthdate").value
 
         const formData = new FormData(formCadastroUser)
         const data =  Object.fromEntries(formData.entries())
